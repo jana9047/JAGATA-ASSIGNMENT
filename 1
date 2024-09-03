@@ -1,0 +1,41 @@
+import java.util.HashMap;
+import java.util.Map;
+public class DuplicateDifference {
+    public static void main(String[] args) {
+        int[] A = {2, 3, 5, 7, 3, 2, 8, 9, 5}; 
+        findDifferenceBetweenFirstAndLastDuplicate(A);
+    }
+    public static void findDifferenceBetweenFirstAndLastDuplicate(int[] A) {
+        Map<Integer, Integer> firstOccurrence = new HashMap<>();
+        Map<Integer, Integer> lastOccurrence = new HashMap<>();
+        for (int i = 0; i < A.length; i++) {
+            int num = A[i];
+            if (!firstOccurrence.containsKey(num)) {
+                firstOccurrence.put(num, i); 
+            }
+            lastOccurrence.put(num, i); 
+        }
+        Integer firstDuplicate = null;
+        Integer lastDuplicate = null;
+        
+        for (Map.Entry<Integer, Integer> entry : firstOccurrence.entrySet()) {
+            int key = entry.getKey();
+            int firstIndex = entry.getValue();
+            int lastIndex = lastOccurrence.get(key);
+            if (firstIndex != lastIndex) {
+                if (firstDuplicate == null || firstIndex < firstOccurrence.get(firstDuplicate)) {
+                    firstDuplicate = key;
+                }
+                if (lastDuplicate == null || lastIndex > lastOccurrence.get(lastDuplicate)) {
+                    lastDuplicate = key;
+                }
+            }
+        }
+        if (firstDuplicate == null || lastDuplicate == null) {
+            System.out.println("No duplicates found.");
+            return;
+        }
+        int difference = lastDuplicate - firstDuplicate;
+        System.out.println("Difference between the first and last duplicate elements: " + difference);
+    }
+}
