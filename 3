@@ -1,0 +1,59 @@
+import java.util.Scanner;
+class Student {
+    private String name;
+    private String regNo;
+    private String dept;
+    private int year;
+    private int semester;
+    private double mark1, mark2, mark3, mark4, mark5, mark6;
+    private double total;
+    private double average;
+    public void getData() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter Student Name: ");
+        name = scanner.nextLine();
+        System.out.println("Enter Registration Number: ");
+        regNo = scanner.nextLine();
+        System.out.println("Enter Department: ");
+        dept = scanner.nextLine();
+        System.out.println("Enter Year: ");
+        year = scanner.nextInt();
+        System.out.println("Enter Semester: ");
+        semester = scanner.nextInt();
+        System.out.println("Enter Marks for 6 subjects: ");
+        mark1 = scanner.nextDouble();
+        mark2 = scanner.nextDouble();
+        mark3 = scanner.nextDouble();
+        mark4 = scanner.nextDouble();
+        mark5 = scanner.nextDouble();
+        mark6 = scanner.nextDouble();
+        total = mark1 + mark2 + mark3 + mark4 + mark5 + mark6;
+        average = total / 6.0;
+    }
+    public void display() {
+        System.out.println("\nStudent Details:");
+        System.out.println("Name: " + name);
+        System.out.println("Registration Number: " + regNo);
+        System.out.println("Department: " + dept);
+        System.out.println("Year: " + year);
+        System.out.println("Semester: " + semester);
+        System.out.println("\nMarks:");
+        System.out.println("Mark 1: " + mark1);
+        System.out.println("Mark 2: " + mark2);
+        System.out.println("Mark 3: " + mark3);
+        System.out.println("Mark 4: " + mark4);
+        System.out.println("Mark 5: " + mark5);
+        System.out.println("Mark 6: " + mark6);
+        System.out.println("\nTotal Marks: " + total);
+        System.out.println("Average Marks: " + average);
+        double percentage = (total / 600) * 100;
+        System.out.println("Percentage: " + percentage + "%");
+    }
+}
+public class StudentMarks {
+    public static void main(String[] args) {
+        Student student = new Student();
+        student.getData();
+        student.display();
+    }
+}
