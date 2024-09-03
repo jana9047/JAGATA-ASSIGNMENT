@@ -1,0 +1,27 @@
+public class CharacterCounter {
+    public static void main(String[] args) {
+        String s = "aaabbccdeeee"; 
+        if (s == null || s.isEmpty()) {
+            System.out.println("Number of characters occurring more than twice consecutively: 0");
+            return;
+        }
+        int count = 0; 
+        char currentChar = s.charAt(0);
+        int currentCount = 1; 
+        for (int i = 1; i < s.length(); i++) {
+            if (s.charAt(i) == currentChar) {
+                currentCount++;
+            } else {
+                if (currentCount > 2) {
+                    count++;
+                }
+                currentChar = s.charAt(i);
+                currentCount = 1;
+            }
+        }
+        if (currentCount > 2) {
+            count++;
+        }
+        System.out.println("Number of characters occurring more than twice consecutively: " + count);
+    }
+}
